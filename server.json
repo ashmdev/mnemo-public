@@ -1,0 +1,46 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.ashmdev/mnemo",
+  "description": "Persistent memory + 55 expert skills + workflows for AI coding agents. Hybrid FTS5 + vector search, 8 agent protocols, team sync, single Go binary.",
+  "repository": {
+    "url": "https://github.com/ashmdev/mnemo-public",
+    "source": "github"
+  },
+  "version": "2.1.0",
+  "websiteUrl": "https://mnemo.dev",
+  "_meta": {
+    "io.github.ashmdev.mnemo/installation": {
+      "homebrew": "brew install ashmdev/tap/mnemo",
+      "binary": "https://github.com/ashmdev/mnemo-releases/releases/latest",
+      "curl": "curl -fsSL https://mnemo.dev/install | sh",
+      "quickstart": "mnemo setup claude-code"
+    },
+    "io.github.ashmdev.mnemo/capabilities": {
+      "mcp_tools": 32,
+      "skills": 55,
+      "packs": 8,
+      "supported_agents": [
+        "claude-code",
+        "cursor",
+        "windsurf",
+        "codex",
+        "opencode",
+        "aider",
+        "amp",
+        "gemini-cli"
+      ],
+      "license": "MIT",
+      "language": "Go",
+      "features": [
+        "persistent-memory",
+        "hybrid-search",
+        "skills-marketplace",
+        "workflows-fsm",
+        "team-sync-sse",
+        "knowledge-graph",
+        "document-ingest",
+        "a2a-protocol"
+      ]
+    }
+  }
+}

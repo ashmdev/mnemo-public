@@ -1,0 +1,14 @@
+name: "notion-importer"
+version: "1.0.0"
+description: "Import Notion databases as memories with entity extraction"
+author: "mnemo-team"
+type: "ingest"
+transport: "command"
+command: "mnemo"
+args: ["ingest", "--notion"]
+capabilities:
+  - document_ingest
+  - entity_extraction
+config:
+  NOTION_TOKEN: ""
+timeout: 120

@@ -1,0 +1,16 @@
+name: "confluence-importer"
+version: "1.0.0"
+description: "Import Confluence spaces as memories with entity extraction"
+author: "mnemo-team"
+type: "ingest"
+transport: "command"
+command: "mnemo"
+args: ["ingest", "--confluence"]
+capabilities:
+  - document_ingest
+  - entity_extraction
+config:
+  confluence_url: ""
+  CONFLUENCE_TOKEN: ""
+  CONFLUENCE_EMAIL: ""
+timeout: 120
