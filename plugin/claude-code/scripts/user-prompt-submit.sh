@@ -96,6 +96,17 @@ fi
 # Check session age — skip nudge if session < 5 minutes old.
 if [ -n "$SESSION_ID" ]; then
   SESSION_JSON=$(api_get "/sessions/${SESSION_ID}")
+  if [ -z "$SESSION_JSON" ]; then
+    # Session not found server-side. Happens when mnemo serve was restarted
+    # (or DB reset) mid-Claude-Code-session: SessionStart fired against a
+    # prior server process, so this id was never persisted to the current
+    # DB. Recreate lazily so subsequent mem_save/prompts bind to it.
+    # SessionRepo.Create is idempotent (INSERT OR IGNORE).
+    api_post "/sessions" \
+      "{\"id\":\"${SESSION_ID}\",\"project\":\"${PROJECT}\",\"directory\":\"${CWD}\",\"agent\":\"claude-code\"}" \
+      >/dev/null
+    SESSION_JSON=$(api_get "/sessions/${SESSION_ID}")
+  fi
   if [ -n "$SESSION_JSON" ]; then
     SESSION_START=$(echo "$SESSION_JSON" | jq -r '.started_at // empty' 2>/dev/null)
     if [ -n "$SESSION_START" ]; then

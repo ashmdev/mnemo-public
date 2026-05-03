@@ -9,6 +9,10 @@ args: ["ingest", "--notion"]
 capabilities:
   - document_ingest
   - entity_extraction
+permissions:
+  - memory:write
+  - entities:write
+  - network:outbound
 config:
   NOTION_TOKEN: ""
 timeout: 120

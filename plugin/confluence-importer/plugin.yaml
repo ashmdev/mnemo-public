@@ -9,6 +9,10 @@ args: ["ingest", "--confluence"]
 capabilities:
   - document_ingest
   - entity_extraction
+permissions:
+  - memory:write
+  - entities:write
+  - network:outbound
 config:
   confluence_url: ""
   CONFLUENCE_TOKEN: ""
